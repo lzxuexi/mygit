@@ -1,0 +1,73 @@
+//结构体的创建
+/*
+#include<stdio.h>
+#include<string.h>
+struct book
+{
+    char name[20];//c语言程序设计
+    short price;//55
+};
+
+int main()
+{
+    //利用结构体类型-创建一个该类型的结构体变量；
+    struct book b1 = {"c语言程序设计",55};
+    struct book*pb = &b1;
+    //利用pb打印出我的书名和价格；
+    //.   结构体变量.成员
+    //->  结构体指针->成员
+    printf("书名：%s\n", pb->name);
+    printf("价格：%d元\n",pb->price);
+    printf("书名：%s\n",b1.name);
+    printf("价格：%d元\n",b1.price);
+    printf("%s\n",(*pb).name);
+    printf("%d\n",(*pb).price);
+    b1.price = 15;
+    strcpy(b1.name,"c++");//strcpy- string copy 字符串拷贝-要用库函数#include<string.h>
+    printf("修改后的名字：%s\n",pb->name);
+    printf("修改后的价格：%d\n", b1.price);
+    return 0;
+}
+*/
+
+
+//if else 循环语句
+/*
+#include<stdio.h>
+int main()
+{
+    int age = 0;
+    scanf("%d",&age);
+    if(age<18)
+        printf("未成年");
+    else if(18<=age && age<28)
+        printf("青年\n");
+    else if(28<=age && age<50)
+        printf("壮年\n");
+    else
+        printf("老年\n");
+    return 0;
+}
+*/
+//如果条件成立，要执行多条语句，要使用代码块{}
+//if()
+//{
+//}
+
+
+//悬空else
+//编译结果为空，因为第一个if返回值为0，则之后的代码不被执行。 else匹配的是最近的一个if。
+/*
+#include<stdio.h>
+int main()
+{
+    return 0;
+    int a = 0;
+    int b = 2;
+    if(a==1)
+        if(b==2)
+            printf("hehe\n");
+        else
+            printf("haha\n");
+}
+*/
