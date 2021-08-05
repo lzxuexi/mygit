@@ -1,0 +1,122 @@
+//函数的嵌套调用和链式访问。
+/*
+#include<stdio.h>
+int main()
+{
+    printf("%d",printf("%d",printf("%d",43)));//结果是4321，因为printf函数的返回值是打印在屏幕上的个数
+    return 0;
+}
+*/
+
+// 函数声明放在头文件中，函数定义放在对应的源文件中.例add.
+/*
+#include"add.h"
+#include<stdio.h>
+int main()
+{
+    int a = 10;
+    int b = 20;
+    //int ret = add(a,b);
+    //printf("%d",ret);两种方法皆可.
+    printf("%d",add(a,b));
+    return 0;
+}
+*/
+
+//函数的递归，就是函数自己调用自己
+/*
+#include<stdio.h>
+int main()
+{
+    printf("hehe");//会栈溢出.
+    main();
+    return 0;
+}
+*/
+
+/*
+#include<stdio.h>
+void print(int a)
+{
+    if(a>9)
+    {
+        print(a/10);
+    }
+    printf("%d ",a%10);
+}
+
+void print1(int a)
+{
+    printf("%d ",a%10);
+    if(a>9)
+    {
+        print1(a/10);
+    }
+}
+int main()
+{
+    int a = 0;
+    scanf("%d",&a);
+    print(a);
+    printf("\n");
+    print1(a);
+    return 0;
+}
+*/
+
+//自己编写函数不使用临时变量求字符串长度；
+/*
+int my_string(char* arr)
+{
+    if(*arr != '\0')
+        return 1 + my_string(arr+1);
+    else
+        return 0;
+}
+#include<stdio.h>
+int main()
+{
+    char arr[] = "bit";
+    //int ret = my_string(arr);
+    printf("%d",my_string(arr));
+    return 0;
+}
+*/
+
+//斐波那契数列求值。用递归求太占内存，效率慢。最好用循环。
+/*
+int pid(int n)
+{
+    if(n>2)
+    {
+        return pid(n-1)+pid(n-2);
+    }
+    else
+    {
+        return 1;
+    }
+}
+int pid1(int n)
+{
+    int a = 1;
+    int b = 1;
+    int c = 1;
+    while(n>2)
+    {
+        c=a+b;
+        a=b;
+        b=c;
+        n--;
+    }
+    //return c;
+}
+#include<stdio.h>
+int main()
+{
+    int n = 0;
+    scanf("%d",&n);
+    int ret = pid1(n);
+    printf("%d",ret);
+    return 0;
+}
+*/
