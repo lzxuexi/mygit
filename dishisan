@@ -1,0 +1,183 @@
+//求n的阶乘
+/*
+#include<stdio.h>
+int count_n(int n)
+{
+    int m = 0;
+    int sum = n;
+    for(m=1;m<n;m++)
+    {
+        sum=sum*m;
+    }
+    return sum;
+}
+//用递归求n的阶乘
+int count_n1(int n)
+{
+    if(n>1)
+    {
+       return count_n1(n-1)*n;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int main()
+{
+    int n = 0;
+    int sum = 0;
+    scanf("%d",&n);
+    sum = count_n1(n);
+    printf("%d",sum);
+    return 0;
+}
+*/
+
+//将数组逆序排列
+/*
+#include<stdio.h>
+#include<string.h>
+void reverse_string(char* arr,int sz)
+{
+    int left = 0;
+    int right = sz-2;// 不能写sz-1，因为会把\0也交换，导致结果显示为0；
+    while(left<right)
+    {
+        char tem = arr[left];
+        arr[left] = arr[right];
+        arr[right] = tem;
+        left++;
+        right--;
+    }
+}
+void reverse_string1(char* arr1)
+{
+    int left = 0;
+    int right = strlen(arr1)-1;//???为什么能用strlen不能用int sz = sizeof(arr)/sizeof(arr[0])在函数里求；
+    while(left<right)
+    {
+        char tem = arr1[left];
+        arr1[left] = arr1[right];
+        arr1[right] = tem;
+        left++;
+        right--;
+    }
+}
+void reverse_string2(char* arr,int sz)
+{
+    int left = 0;
+    int right = sz-2;// 不能写sz-1，因为会把\0也交换，导致结果显示为0；
+    while(left<right)
+    {
+        char tem = *(arr+left);
+        *(arr+left) = *(arr+right);
+        *(arr+right) = tem;
+        left++;
+        right--;
+    }
+}
+int my_strlen(int* arr)
+{
+    int count = 0;
+    while(*arr != 0)
+    {
+        count++;
+        arr++;
+    }
+    return count;
+}
+int main()
+{
+    char arr[] = "abcdef";
+    int sz = sizeof(arr)/sizeof(arr[0]);
+    reverse_string(arr,sz);
+    printf("%s\n",arr);
+    return 0;
+}
+*/
+
+//用递归的方法将数组逆序
+/*
+int my_strlen(char* arr)
+{
+    int count = 0;
+    while(*arr != 0)
+    {
+        count++;
+        arr++;
+    }
+    return count;
+}
+void reverse_string0(char* arr)
+{
+    int len=my_strlen(arr);
+    char tem = arr[0];
+    arr[0]=arr[len-1];
+    arr[len-1] = '\0';
+    if(my_strlen(arr)>=2)//写成if(my_strlen(arr+1)>=2)也没问题，??为什么
+    reverse_string0(arr+1);
+    arr[len-1] = tem;
+}
+#include<stdio.h>
+int main()
+{
+    char arr[] = "abcd";
+    reverse_string0(arr);
+    printf("%s\n",arr);
+    return 0;
+}
+*/
+
+//结构体
+//struct 结构体关键字 stu 结构体标签  struct stu - 结构体类型
+/*
+struct stu
+{
+  char name[20];
+  short age;
+  char tele[12];
+  char sex[5];
+}s1,s2,s3;//s1，s2，s3是三个全局的结构体变量
+typedef struct stu
+{
+  char name[20];
+  short age;
+  char tele[12];
+  char sex[5];
+}stu;
+int main()
+{
+    struct stu s1;//局部变量.
+    stu s2;
+    return 0;
+}
+*/
+/*
+#include<stdio.h>
+struct s
+{
+    int a;
+    char c;
+    char arr[20];
+    double d;
+};
+
+struct t
+{
+    char ch[10];
+    struct s s;
+    char* pc;
+};
+
+int main()
+{
+    char arr[] = "hello bit\n";
+    struct t t = {"hehe",{100,'w',"hello world",3.14},arr};
+    printf("%s\n",t.ch);//hehe
+    printf("%s\n",t.s.arr);//hello world
+    printf("%lf\n",t.s.d);//3.14
+    printf("%s\n",t.pc);//hello bit
+    return 0;
+}
+*/
