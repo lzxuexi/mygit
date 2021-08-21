@@ -1,0 +1,70 @@
+/*
+#include<stdio.h>
+typedef struct stu
+{
+    char name[20];//对于字符串要给出具体的空间，不然会报错.
+    short age;
+    char tele[15];
+    char sex[5];
+}stu;
+void print1(stu s)
+{
+    printf("name: %s\n",s.name);
+    printf("age: %d\n",s.age);
+    printf("tele: %s\n",s.tele);
+    printf("sex: %s\n",s.sex);
+}
+void print2(stu* s)
+{
+    printf("name: %s\n",s->name);
+    printf("age: %d\n",s->age);
+    printf("tele: %s\n",s->tele);
+    printf("sex: %s\n",s->sex);
+}
+int main()
+{
+    stu s = {"张三",30,"18645315451","男"};
+    print1(s);
+    print2(&s);//最好用传地址的形式；
+    return 0;
+}
+*/
+/*
+#include<stdio.h>
+int main()
+{
+    int i = 0;
+    int sum = 0;
+    int n = 0;
+    int ret = 1;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        int j = 0;
+        ret = 1;
+        for(j=1;j<=i;j++)
+        {
+            ret = ret*j;
+        }
+        sum = ret +sum;
+    }
+    printf("%d\n",sum);
+    return 0;
+}
+*/
+/*
+//会死循环；1.栈区的默认使用：先使用高地址处的空间，再使用低地址处的空间
+2.数组随着下标的增长，地址是由低到高变化
+#include<stdio.h>
+int main()
+{
+    int i = 0;
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    for(i=0;i<=9;i++)
+    {
+        printf("hehe\n");
+        arr[i]=0;
+    }
+    return 0;
+}
+*/
