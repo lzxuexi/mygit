@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+/*
+char* my_strcpy(char* str,const char* src)
+{
+    assert(str!=NULL);
+    assert(src!=NULL);
+    char* ret = str;
+    while(*str++ = *src++)
+    {
+          ;
+    }
+    return ret;
+}
+int main()
+{
+    char arr1[] = "bit";
+    char arr2[] = "##########";
+    //strcpy(arr2,arr1);
+    //my_strcpy(arr2,arr1);
+    printf("%s\n",my_strcpy(arr2,NULL));
+    return 0;
+}
+*/
+/*
+int main()
+{
+    const int num = 10;
+    const int* p =&num;
+    *p = 20;//err const放在指针变量*的左边时，修饰的是*p，不能通过p改变*p的值。
+            //    const放在指针变量*的右边时，修饰的是指针变量p本身，p不能被改变了。
+    printf("%d\n",num);
+    return 0;
+}
+*/
