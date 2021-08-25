@@ -1,5 +1,61 @@
-#include<stdio.h>
-int  main()
+/*
+int main()
 {
-    return  0;
+    int num = 9;
+    //+ 1.001*2^3
+    //(-1)^0 10000010 00100000000000000000000
+    //
+    float* pnum = (float*)&num;
+    printf("n= :%d\n",num);
+    printf("*pnum: %f\n",*pnum);
+    *pnum = 9.0;
+    printf("n= :%d\n",num);
+    printf("*pnum: %f\n",*pnum);
+    return 0;
+}
+*/
+/*
+int main()
+{
+    char arr[] = "abcdef";
+    char* p = arr;
+    *p = "g";
+    printf("%s\n",arr);
+    printf("%s\n",p);
+    printf("%s\n",*p);
+    return 0;
+}
+*/
+
+/*
+int main()
+{
+    char* p = "abcdef";//"abcdef"是一个常量字符串；不能被改变，只能使用；
+    return 0;
+}
+*/
+
+int main()
+{
+    char arr1[] = "abcedf";
+    char arr2[] = "abcdef";
+    const char* p1 = "abcdef";
+    const char* p2 = "abcdef";
+    if(arr1 == arr2)//虽然存贮的字符串相同，但首元素地址不相同；
+    {
+        printf("hehe\n");
+    }
+    else
+    {
+        printf("haha\n");
+    }
+    if(p1 == p2)//常量字符串；不能被改变，只能使用,所以没有必要存两份，认为p1，p2存的是相同的。
+    {
+        printf("hehe\n");
+    }
+    else
+    {
+        printf("haha\n");
+    }
+    return 0;
 }
