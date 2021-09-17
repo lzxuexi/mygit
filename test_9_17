@@ -1,0 +1,199 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+//回调函数
+//void calc(int (*pf)(int, int))
+//{
+//	int x = 0;
+//	int y = 0;
+//	printf("请输入两个操作数：");
+//	scanf("%d%d", &x, &y);
+//	printf("%d\n", pf(x,y));
+//}
+//int add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	calc(add);
+//	return 0;
+//}
+
+
+
+//指向函数指针数组的指针
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int(*p)[10] = &arr;//去除数组的地址
+//
+//	int(*pf)(int, int);//函数指针
+//	int (*pfarr[4])(int, int);//pfarr是一个数组—函数指针的数组
+//	//ppfarr是一个指向[函数指针数组]的指针
+//	int(*(*ppfarr)[4])(int,int) = &pfarr;
+//	//
+//	//ppfarr是一个数组指针，指针指向的数组有4个元素。
+//	//指向的数组的每个元素的类型是一个函数指针 int (*)(int, int)
+//	//
+//	return 0;
+//} 
+
+
+
+//struct stu
+//{
+//	char name[20];
+//	int age;
+//};
+//qsort 函数排序
+// 第一个参数：待排序数组的首元素地址
+// 第二个参数：待排序数组的元素个数
+// 第三个参数：待排序数组的每个元素的大小-单位是字节；
+// 第四个元素:是函数指针，比较两个函数的所用函数的地址-这个函数使用者自己实现
+// 函数指针的两个参数是：待比较的两个元素的地址 
+//void qsort(void* base,
+//	       size_t num,
+//	       size_t width,
+//	       int(*cmp)(const void* e1, const void* e2)返回值是第一个元素大于第二个元素返回正数，相同0，小于负数；
+//           );
+//
+//int cmp_int(const void* e1, const void* e2)
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//int cmp_stu_age(const void* e1, const void* e2)
+//{
+//	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+//}
+//int main()
+//{
+//	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	struct stu s[3] = { {"zhangsan",20},{"lisi",10},{"wangwu",30}};
+//	int sz1 = sizeof(s) / sizeof(s[0]);
+//	qsort(arr, sz,sizeof(arr[0]),cmp_int);
+//	qsort(s, sz1, sizeof(s[0]), cmp_stu_age);
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d", arr[i]);
+//	} 
+//	return 0;
+//}
+
+
+
+
+//普通冒泡排序；
+//void paixu(int* arr, int sz)
+//{
+//	int j = 0;
+//	for (j = 0; j < sz - 1; j++)
+//	{ 
+//		int i = 0;
+//		for (i = 0; i < sz - j - 1; i++)
+//		{
+//			if (arr[i] > arr[i + 1])
+//			{
+//				int tem = 0;
+//				tem = arr[i];
+//				arr[i] = arr[i + 1];
+//				arr[i + 1] = tem;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	 
+//	paixu(arr, sz);
+//
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	} 
+//	return 0;
+//}
+
+
+
+//void类型指针介绍.
+//int main()
+//{
+//	int a = 0;
+//	int* p = &a;
+//	void* pa = &a;//void类型的指针可以接收任意类型的地址；
+//	//*pa = 0;(错误写法)     //void类型的指针 不能进行解引用操作；
+//	//pa++; (错误写法)       //void类型的指针 不能进行+-整数的操作；
+//	char b = 'w';
+//	pa = &b;
+//	return 0;
+//}
+
+
+
+//自己仿照写一个my_qsort函数；
+struct stu
+{
+	char name[20];
+	int age;
+};
+void swap(char* e1, char* e2, int width)
+{
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tem = *e1;
+		*e1 = *e2;
+		*e2 = tem;
+		e1++;
+		e2++;
+	}
+}
+int cmp_int(void* e1,void* e2)
+{
+	return *(int*)e1 - *(int*)e2;
+}
+int cmp_stu_age(void* e1, void* e2)
+{
+	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+}
+int cmp_stu_name(void* e1, void* e2)
+{
+	return strcmp(((struct stu*)e1)->name ,((struct stu*)e2)->name);
+	//strcmp函数返回值也是第一个元素大于第二个元素返回1，相同0，小于-1；
+}
+void my_qsort(void* arr, int sz, int width, int (*cmp)(void*, void*))
+{
+	int i = 0;
+	for (i = 0; i < sz - 1; i++)//比较的趟数
+	{
+		int j = 0;
+		for (j = 0; j < sz - i - 1; j++)
+		{
+			if (cmp((char*)arr+j*width, (char*)arr + (1 + j)*width) > 0)
+			{
+				swap((char*)arr + j * width, (char*)arr + (1 + j) * width,width);
+			}
+		}
+	}
+}
+int main()
+{
+	int arr[] = { 9,8,7,6,5,4,3,2,1,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	struct stu s[3] = { {"zhangsan",20},{"lisi",10},{"wangwu",30}};
+	int sz1 = sizeof(s) / sizeof(s[0]);
+	my_qsort(arr, sz,sizeof(arr[0]),cmp_int);
+	my_qsort(s, sz1, sizeof(s[0]), cmp_stu_age);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d", arr[i]);
+	} 
+	return 0;
+}
